@@ -1,0 +1,69 @@
+<testApp>:
+    Screen:
+        Image:
+            source: "domy.png"
+            size_hint: None, None
+            width: "360dp"
+            height: "640dp" 
+            pos_hint: {'center_x':.45,'center_y':.72}     
+                
+        MDLabel:
+            text:"Login"
+            font_size:"48dp"
+            halign:"center"
+            color: "#FF5623"
+            pos_hint: {'center_y':.9}
+
+        MDTextField:
+            hint_text: 'Username'
+            icon_right: 'account'
+            font_size: '20dp'
+            size_hint_x:.85
+            pos_hint: {'center_x':.5,'center_y':.65}  
+            on_text: self.text=self.text.replace(" ","")
+            write_tab: False
+
+        MDTextField:
+            hint_text: 'Password'
+            icon_right: 'eye-off'
+            font_size: '20dp'
+            size_hint_x:.85
+            pos_hint: {'center_x':.5,'center_y':.55}  
+            on_text: self.text=self.text.replace(" ","")
+            write_tab: False
+
+        BoxLayout:
+            size_hint: .85, None
+            height:'30dp'
+            pos_hint: {'center_x':.5,'center_y':.4}
+            MDCheckbox:
+                size_hint: None, None
+                width:'30dp'
+                height:'30dp'
+                pos_hint: {'center_x':.5,'center_y':.5}
+                on_press:
+                    psswd.password=False if psswd.password==True else True
+                    psswd.icon_right="eye" if psswd.icon_right=='eye-off' else "eye-off"
+            MDLabel:
+                text:"[ref= Show Password]Show Password[/ref]"
+                markup: True
+                pos_hint: {'center_x':.5,'center_y':.5}
+                on_ref_press:
+                    cb.active= False if cb.account==True else True
+        BoxLayout:
+            size_hint: .55, None
+            height:'30dp'
+            pos_hint: {'center_x':.55,'center_y':.45}
+            spacing : '15dp'
+            MDFlatButton:
+                text:"SIGN IN"
+                font_size:'22dp'
+                size_hint_x:1
+                md_bg_color: "#FF5623"
+            MDFlatButton:
+                text:"SIGN UP"
+                font_size:'22dp'
+                size_hint_x:1
+                md_bg_color: "#FF5623"
+
+
